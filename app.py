@@ -3,8 +3,9 @@
 import string
 import json
 import sys
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+#from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from argparse import ArgumentParser
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 parser = ArgumentParser(description='Process some integers.')
@@ -34,7 +35,7 @@ class InstantAPIServer(BaseHTTPRequestHandler):
         try:
             node = json.loads(open(file_arg).read())
         except IOError:
-            print "Couldn't find file '%s'" % file_arg
+            print(("Couldn't find file '%s'") % file_arg)
             sys.exit()
 
         for component in components:
@@ -54,9 +55,9 @@ class InstantAPIServer(BaseHTTPRequestHandler):
 
 try:
     server = HTTPServer(('', port), InstantAPIServer)
-    print 'Starting instant API server on port %s...' % (port)
+    print(('Starting instant API server on port %s...') % (port))
     server.serve_forever()
 
 except KeyboardInterrupt:
-    print 'Stopping instant API server...'
+    print('Stopping instant API server...')
     server.socket.close()
