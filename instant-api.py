@@ -15,7 +15,7 @@ parser.add_argument("-p", "--port", dest="port",
 
 args = parser.parse_args().__dict__
 
-file_arg = args['filename'] or "source.json"
+file_arg = args['filename'] or "test2.json"
 port_arg = args['port'] or "8080"
 
 port = 8080 if port_arg is None else int(port_arg)
