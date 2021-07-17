@@ -1,1 +1,1 @@
-web: gunicorn app:app --preload --workers 1
+web: gunicorn app:app --preload --workers 1:python2.7
